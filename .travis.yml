@@ -6,12 +6,14 @@ addons:
     - libtool
     - cmake
     - realpath
-    - clang-format-7
     - automake
     - ninja-build
     - curl
 go:
 - '1.10'
+
+before_script:
+- bash -c install_prerequisites.sh
 
 script:
 - go get github.com/bazelbuild/buildtools/buildifier
