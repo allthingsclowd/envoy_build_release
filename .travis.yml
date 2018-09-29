@@ -1,0 +1,20 @@
+language: go
+sudo: required
+addons:
+  apt:
+    packages:
+    - libtool
+    - cmake
+    - realpath
+    - clang-format-7
+    - automake
+    - ninja-build
+    - curl
+go:
+- '1.10'
+
+script:
+- go get github.com/bazelbuild/buildtools/buildifier
+- bazel build //source/exe:envoy-static
+- ls -al
+
