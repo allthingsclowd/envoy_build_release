@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
     ENV['ENVOY_IP']||="192.168.2.250"
     ENV['ENVOY_GUEST_PORT']||="10000"
     ENV['ENVOY_HOST_PORT']||="10000"
+    ENV['ENVOY_LOG_LEVEL']||="info"
     
     #global config
     config.vm.synced_folder ".", "/vagrant"
