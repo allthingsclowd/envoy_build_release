@@ -1,22 +1,13 @@
-language: go
+language: bash
 sudo: required
-addons:
-  apt:
-    packages:
-    - libtool
-    - cmake
-    - realpath
-    - automake
-    - ninja-build
-    - curl
-go:
-- '1.10'
+
+services: 
+  - docker
 
 before_script:
-- bash install_prerequisites.sh
+- docker pull envoyproxy/envoy:latest
+- docker run --rm -d -p 10000:10000 envoyproxy/envoy:latest
 
 script:
-- go get github.com/bazelbuild/buildtools/buildifier
-- bazel build //source/exe:envoy-static
-- ls -al
+- curl -v localhost:10000
 
