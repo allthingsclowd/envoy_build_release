@@ -6,8 +6,11 @@ services:
 
 before_script:
 - docker pull envoyproxy/envoy:latest
-- docker run --rm -d -p 10000:10000 envoyproxy/envoy:latest
+- docker run --name envoy --rm -d -p 10000:10000 envoyproxy/envoy:latest
 
 script:
 - curl -v localhost:10000
+- docker cp envoy:/usr/local/bin/envoy envoy
+- docker cp envoy:/etc/envoy/envoy.yaml envoy.yml
+- ls
 
