@@ -1,16 +1,25 @@
 language: bash
 sudo: required
-
-services: 
-  - docker
-
+services:
+- docker
 before_script:
 - docker pull envoyproxy/envoy:latest
 - docker run --name envoy --rm -d -p 10000:10000 envoyproxy/envoy:latest
-
 script:
 - curl -v localhost:10000
 - docker cp envoy:/usr/local/bin/envoy envoy
 - docker cp envoy:/etc/envoy/envoy.yaml envoy.yml
 - ls
-
+before_deploy:
+ - tar -zcvf envoy.tar.gz envoy*
+deploy:
+  provider: releases
+  api_key:
+    secure: Gc5aR44YIJy8KlOIiCNffwPoZEGZlkxDcj/N0KfdlOEJcNwIBlQtQGc9nYPpu3VVyEvsR01NT8gCx8B6A/gRsZf6NFJ+6gnlH2KxeOU+sJK5m/gDrvz1sAcW3tXXztEguKDjx8Y3r2HNeF2bcVs0eUBQJxlNUypCNSo8KXde5waAdiLXtJkfCC3QOXFMWZl4QMnJqUOPNyGeGXdO20gqdcUNGibHTIh3uOtN1PiK3zxsDsaQtixxwqUMxrZqqXa92NRIKD9m2ztWshaNhg9GL9K5cgM+3K1WsZ9y4FWZZcUlR4Rah6/J4ciYu1TcW4NOHazv2pHWbufa2T2IlzlzTGN2cSEvT/qlqiXPkATzx1GBvS4lztuRH3VAnNtoc8WLJGfoWx9VCsze/dtKJIqoRtiCURJQHypfNbblYONgm9lG4Mtu8573oLRo8aQ2YnU+lDON5aOmnBrZcX/W/5S0UCksXOPjTfBzueGzoF+WPXXNeBa0GgJuAmE2Oa4XzX66AmUM1iuCzVdXkMBUaxyaSLgQCJpZXydHKQn+resxsGvxM/XiWpoXQekYoAeNdFSd30Au/EkY+HGFkzVyjySGyqpr0ikkh4dLBa4MhueSbfqvzIiSDQ6QhfKFcgGTQMHdcxeN3rfcNHQ+zLQn3g1nSaW8uf47GAtZPB8sa3njEwI=
+  file_glob: true
+  file: 
+    - "envoy.tar.gz"
+  skip_cleanup: true
+  on:
+    repo: allthingsclowd/envoy_build_release
+    tags: true
