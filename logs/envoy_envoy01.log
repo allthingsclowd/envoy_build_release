@@ -1,0 +1,20 @@
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:202] initializing epoch 0 (hot restart version=10.200.16384.127.options=capacity=16384, num_slots=8209 hash=228984379728933363 size=2654312)
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:204] statically linked extensions:
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:206]   access_loggers: envoy.file_access_log,envoy.http_grpc_access_log
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:209]   filters.http: envoy.buffer,envoy.cors,envoy.ext_authz,envoy.fault,envoy.filters.http.header_to_metadata,envoy.filters.http.jwt_authn,envoy.filters.http.rbac,envoy.grpc_http1_bridge,envoy.grpc_json_transcoder,envoy.grpc_web,envoy.gzip,envoy.health_check,envoy.http_dynamo_filter,envoy.ip_tagging,envoy.lua,envoy.rate_limit,envoy.router,envoy.squash
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:212]   filters.listener: envoy.listener.original_dst,envoy.listener.proxy_protocol,envoy.listener.tls_inspector
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:215]   filters.network: envoy.client_ssl_auth,envoy.echo,envoy.ext_authz,envoy.filters.network.rbac,envoy.filters.network.sni_cluster,envoy.filters.network.thrift_proxy,envoy.http_connection_manager,envoy.mongo_proxy,envoy.ratelimit,envoy.redis_proxy,envoy.tcp_proxy
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:217]   stat_sinks: envoy.dog_statsd,envoy.metrics_service,envoy.stat_sinks.hystrix,envoy.statsd
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:219]   tracers: envoy.dynamic.ot,envoy.lightstep,envoy.zipkin
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:222]   transport_sockets.downstream: envoy.transport_sockets.capture,raw_buffer,tls
+[2018-10-20 12:12:33.233][002488][info][main] source/server/server.cc:225]   transport_sockets.upstream: envoy.transport_sockets.capture,raw_buffer,tls
+[2018-10-20 12:12:33.236][002488][info][main] source/server/server.cc:267] admin address: 127.0.0.1:9901
+[2018-10-20 12:12:33.236][002488][info][config] source/server/configuration_impl.cc:50] loading 0 static secret(s)
+[2018-10-20 12:12:33.236][002488][info][config] source/server/configuration_impl.cc:56] loading 1 cluster(s)
+[2018-10-20 12:12:33.237][002488][info][config] source/server/configuration_impl.cc:61] loading 1 listener(s)
+[2018-10-20 12:12:33.238][002488][info][config] source/server/configuration_impl.cc:95] loading tracing configuration
+[2018-10-20 12:12:33.238][002488][info][config] source/server/configuration_impl.cc:113] loading stats sink configuration
+[2018-10-20 12:12:33.238][002488][info][main] source/server/server.cc:456] starting main dispatch loop
+[2018-10-20 12:12:33.261][002488][info][upstream] source/common/upstream/cluster_manager_impl.cc:135] cm init: all clusters initialized
+[2018-10-20 12:12:33.261][002488][info][main] source/server/server.cc:425] all clusters initialized. initializing init manager
+[2018-10-20 12:12:33.261][002488][info][config] source/server/listener_manager_impl.cc:908] all dependencies initialized. starting workers
